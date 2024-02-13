@@ -41,6 +41,7 @@ dependencies:
   # Flutter plugin providing detailed information about the device (make, model, etc), and
   # Android or OS version the app is running on.
   device_info: ^2.0.3
+  auto_route: ^5.0.4
 
 
 dev_dependencies:
@@ -53,6 +54,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
+  auto_route_generator: ^5.0.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
