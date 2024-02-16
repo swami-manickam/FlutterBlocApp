@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_bloc: ^7.0.0
   http: ^0.13.1
+  animations: ^2.0.3
+  flutter_svg: ^2.0.9 # help us to use SVG in our app
+  provider: ^6.1.1 #
 
   # Flutter plugin providing detailed information about the device (make, model, etc), and
   # Android or OS version the app is running on.
@@ -71,6 +74,9 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
