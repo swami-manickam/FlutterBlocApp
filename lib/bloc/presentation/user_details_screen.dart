@@ -26,7 +26,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter BLOC Demo'),
+        title: Text('Flutter Product App'),
       ),
       body: Center(
         child: BlocBuilder(

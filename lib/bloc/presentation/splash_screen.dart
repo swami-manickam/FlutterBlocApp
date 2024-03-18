@@ -5,6 +5,7 @@ import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_bloc.d
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_state.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_event.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/presentation/user_details_screen.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/product_list_screen.dart';
 
 
 class SplashScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class SplashScreen extends StatelessWidget {
               // Navigate to the next screen
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => UserDetailsScreen()),
+                MaterialPageRoute(builder: (context) => ProductListScreen()/*UserDetailsScreen()*/),
               );
             }
           },
