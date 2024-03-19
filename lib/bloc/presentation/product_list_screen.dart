@@ -25,13 +25,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter BLOC Demo'),
-      ),
-      body: Align(
-      alignment: Alignment.topCenter,
-      child: _buildProductList(), // replace 'Widget' with your widget
-    ));
+        appBar: AppBar(
+          title: Text('Flutter BLOC Demo'),
+        ),
+        body: Align(
+          alignment: Alignment.topCenter,
+          child: _buildProductList(), // replace 'Widget' with your widget
+        ));
   }
 
   Widget _buildProductList() {
@@ -45,10 +45,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
             if (state is ProductListLoaded) {
               return ProductListWidget(productDetails: state.productDetails);
             }
-            return Text('Unable to fetch the product details!!!');
+            return const Text('Unable to fetch the product details!!!');
           }),
     );
   }
-
-
 }

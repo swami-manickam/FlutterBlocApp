@@ -43,4 +43,10 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _userDetailsBloc.close(); // Close the UserDetailsBloc
+    super.dispose();
+  }
 }
