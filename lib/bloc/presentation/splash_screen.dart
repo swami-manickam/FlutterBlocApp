@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_state.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_event.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/presentation/user_details_screen.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/presentation/product_list_screen.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_state.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/home_page.dart';
 
+import '../domain/navigationtab/landing_page_bloc.dart';
 
 class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final splashBloc = BlocProvider.of<SplashBloc>(context);
     splashBloc.add(SplashStarted());
+    final LandingPageBloc landingPageBloc = LandingPageBloc();
 
     return Scaffold(
       body: Center(
@@ -21,9 +23,13 @@ class SplashScreen extends StatelessWidget {
             if (state is SplashNavigationCompleted) {
               // Navigate to the next screen
               Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => ProductListScreen()/*UserDetailsScreen()*/),
-              );
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => BlocProvider<LandingPageBloc>.value(
+                      value: landingPageBloc,
+                      child: const HomePage(),
+                    ),
+                  ));
             }
           },
           child: FadeInImage.assetNetwork(
@@ -36,3 +42,10 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
+
+class LandingPage {
+  const LandingPage();
+}
+
+/*MaterialPageRoute(
+                    builder: (context) => HomePage() */ /*UserDetailsScreen()*/ /*),*/
