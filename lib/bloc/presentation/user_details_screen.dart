@@ -5,6 +5,7 @@ import 'package:flutter_sample_bloc_pattern/bloc/domain/user_details_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/presentation/widgets/user_details_widget.dart';
 
 class UserDetailsScreen extends StatefulWidget {
+  static String routeName = "/userDetail";
   @override
   _UserDetailsScreenState createState() => _UserDetailsScreenState();
 }
