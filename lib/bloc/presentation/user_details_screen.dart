@@ -27,7 +27,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter BLOC Demo'),
+        title: Text('Flutter Product App'),
       ),
       body: Center(
         child: BlocBuilder(
@@ -43,5 +43,11 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
             }),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _userDetailsBloc.close(); // Close the UserDetailsBloc
+    super.dispose();
   }
 }
