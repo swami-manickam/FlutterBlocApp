@@ -39,6 +39,8 @@ dependencies:
   http: ^0.13.1
   intl: ^0.17.0
   get: ^4.3.4
+  google_fonts: 4.0.4
+  flutter_launcher_icons: ^0.13.1
 
   # Flutter plugin providing detailed information about the device (make, model, etc), and
   # Android or OS version the app is running on.
@@ -48,6 +50,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
