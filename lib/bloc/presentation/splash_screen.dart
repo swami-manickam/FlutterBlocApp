@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_event.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_state.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/presentation/home_page.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/login_screen.dart';
 
+import '../domain/login/login_bloc.dart';
 import '../domain/navigationtab/landing_page_bloc.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -15,6 +16,7 @@ class SplashScreen extends StatelessWidget {
     final splashBloc = BlocProvider.of<SplashBloc>(context);
     splashBloc.add(SplashStarted());
     final LandingPageBloc landingPageBloc = LandingPageBloc();
+    final LoginBloc loginScreenBloc = LoginBloc();
 
     return Scaffold(
       body: Center(
@@ -25,11 +27,17 @@ class SplashScreen extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => BlocProvider<LandingPageBloc>.value(
+                    builder: (_) => BlocProvider<LoginBloc>.value(
+                      value: loginScreenBloc,
+                      child: const LoginScreen(),
+                    ),
+                  ));
+
+              /*BlocProvider<LandingPageBloc>.value(
                       value: landingPageBloc,
                       child: const HomePage(),
                     ),
-                  ));
+                  ));*/
             }
           },
           child: FadeInImage.assetNetwork(

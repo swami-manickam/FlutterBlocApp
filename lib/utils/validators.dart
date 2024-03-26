@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
 class Validators {
-  static String passwordValidator(String value) {
-    if (value.isEmpty || value == null) {
+  static String? passwordValidator(String value) {
+    if (value.isEmpty) {
       return "Required";
     } else if (value.length < 8) {
       return "Password too short";
@@ -11,9 +11,9 @@ class Validators {
     }
   }
 
-  static String confirmPasswordValidator(
+  static String? confirmPasswordValidator(
       String password, String confirmPassword) {
-    if (confirmPassword.isEmpty || confirmPassword == null) {
+    if (confirmPassword.isEmpty) {
       return "Required";
     } else if (confirmPassword.length < 8) {
       return "Password too short";
@@ -24,8 +24,8 @@ class Validators {
     }
   }
 
-  static String usernameValidator(String value) {
-    if (value.isEmpty || value == null) {
+  static String? usernameValidator(String value) {
+    if (value.isEmpty) {
       return "Required";
     } else if (!GetUtils.isUsername(value)) {
       return "Invalid Username";
@@ -34,8 +34,8 @@ class Validators {
     }
   }
 
-  static String emailValidator(String value) {
-    if (value.isEmpty || value == null) {
+  static String? emailValidator(String value) {
+    if (value.isEmpty) {
       return "Required";
     } else if (!GetUtils.isEmail(value)) {
       return "Invalid Email";
