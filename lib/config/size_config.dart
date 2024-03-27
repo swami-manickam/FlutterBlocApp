@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SizeConfig {
-  static double screenWidth;
-  static double screenHeight;
+  static double screenWidth = 0.0;
+  static double screenHeight = 0.0;
 
   static void initSize(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
