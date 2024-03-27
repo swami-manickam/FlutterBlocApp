@@ -23,7 +23,7 @@ class CustomButton extends StatelessWidget {
           color: btnBbColor,
           borderRadius: BorderRadius.circular(10.0),
         ),
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 12.0),
         margin: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Center(
             child: loading
@@ -33,7 +33,7 @@ class CustomButton extends StatelessWidget {
                   )
                 : Text(
                     btnLabel,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white, fontSize: 13.0),
                   )),
       ),
     );
