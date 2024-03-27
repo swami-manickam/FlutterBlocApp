@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/login/login_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/navigationtab/landing_page_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/domain/register/register_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/presentation/home_page.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/screens/register_screen.dart';
 import 'package:flutter_sample_bloc_pattern/components/custom_button.dart';
 import 'package:flutter_sample_bloc_pattern/components/custom_text_field.dart';
 import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -24,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
       TextEditingController();
 
   late final LandingPageBloc landingPageBloc;
+  late final RegisterBloc _registerBloc;
 
   String? _emailErrorMessage;
 
@@ -31,11 +34,16 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     _loginScreenBloc = LoginBloc();
     landingPageBloc = LandingPageBloc();
+    _registerBloc = RegisterBloc();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    return _buildLoginScreen();
+  }
+
+  Widget _buildLoginScreen() {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
@@ -43,10 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.messenger,
-              size: 90,
-            ),
+            const Icon(Icons.messenger, size: 90, color: textColor),
             const SizedBox(
               height: 30,
             ),
@@ -67,13 +72,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _emaileditingcontroller,
                     validator: 'Please enter your email id',
                     onChanged: (email) {
-                      /*if (email.isEmpty) {
-                        setState(() {
-                          _emailErrorMessage = 'Please enter your email id';
-                        });
-                      } else {
-                        _loginScreenBloc.add(EmailChanged(email));
-                      }*/
                       _loginScreenBloc.add(EmailChanged(email));
                     },
                   ),
@@ -128,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _loginScreenBloc.add(LoginButtonPressed());
                         }
                       },
-                      loading: state is LoginLoading,
+                      loading: state is LoginLoading?,
                     );
                   }
                 } else {
@@ -150,9 +148,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Theme.of(context).colorScheme.primary,
                       fontSize: 12.0),
                 ),
+                const SizedBox(
+                  width: 10.0,
+                ),
                 GestureDetector(
                   onTap: () {
-                    _loginScreenBloc.add(LoginButtonPressed());
+                    /* _loginScreenBloc.add(LoginButtonPressed());*/
+                    Future.delayed(Duration.zero, () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider<RegisterBloc>.value(
+                            value: _registerBloc,
+                            child: RegisterScreen(),
+                          ),
+                        ),
+                      );
+                    });
                   },
                   child: Text(
                     'Register Now',
@@ -174,6 +186,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     _loginScreenBloc.close();
+    landingPageBloc.close();
+    _registerBloc.close();
     super.dispose();
   }
 }

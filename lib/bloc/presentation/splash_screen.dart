@@ -51,9 +51,5 @@ class SplashScreen extends StatelessWidget {
   }
 }
 
-class LandingPage {
-  const LandingPage();
-}
-
 /*MaterialPageRoute(
                     builder: (context) => HomePage() */ /*UserDetailsScreen()*/ /*),*/
