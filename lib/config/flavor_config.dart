@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 enum Flavor {
   DEVELOPMENT,
@@ -9,7 +8,7 @@ enum Flavor {
 class FlavorValues {
   final String baseUrl;
 
-  FlavorValues({this.baseUrl});
+  FlavorValues({required this.baseUrl});
 }
 
 class FlavorConfig {
@@ -21,15 +20,15 @@ class FlavorConfig {
   final Color colorAccent;
   final FlavorValues values;
 
-  static FlavorConfig _instance;
+  static FlavorConfig? _instance;
 
   factory FlavorConfig({
-    @required Flavor flavor,
+    required Flavor flavor,
     Color colorPrimary = Colors.blue,
     Color colorPrimaryDark = Colors.blue,
     Color colorPrimaryLight = Colors.blue,
     Color colorAccent = Colors.blueAccent,
-    @required FlavorValues values,
+    required FlavorValues values,
   }) {
     _instance ??= FlavorConfig._internal(
       flavor,
@@ -44,14 +43,14 @@ class FlavorConfig {
   }
 
   FlavorConfig._internal(
-      this.flavor,
-      this.name,
-      this.colorPrimary,
-      this.colorPrimaryDark,
-      this.colorPrimaryLight,
-      this.colorAccent,
-      this.values,
-      );
+    this.flavor,
+    this.name,
+    this.colorPrimary,
+    this.colorPrimaryDark,
+    this.colorPrimaryLight,
+    this.colorAccent,
+    this.values,
+  );
 
   static FlavorConfig get instance {
     return _instance;
