@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   const SizedBox(
-                    height: 10.0,
+                    height: 15.0,
                   ),
                   CustomTextField(
                     hintText: 'Password',
@@ -87,6 +87,41 @@ class _LoginScreenState extends State<LoginScreen> {
                       _loginScreenBloc.add(PasswordChanged(password));
                     },
                   ),
+                  const SizedBox(
+                    height: 8.0,
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25),
+                          child: GestureDetector(
+                            onTap: () {
+                              /* _loginScreenBloc.add(LoginButtonPressed());*/
+                              Future.delayed(Duration.zero, () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        BlocProvider<RegisterBloc>.value(
+                                      value: _registerBloc,
+                                      child: const RegisterScreen(),
+                                    ),
+                                  ),
+                                );
+                              });
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: GoogleFonts.montserrat(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        )
+                      ]),
                 ],
               ),
             ),
@@ -139,8 +174,8 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 30.0,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'New Member?',
@@ -174,7 +209,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(width: 30)
               ],
             )
           ],

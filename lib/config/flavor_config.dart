@@ -20,7 +20,7 @@ class FlavorConfig {
   final Color colorAccent;
   final FlavorValues values;
 
-  static FlavorConfig? _instance;
+  static late FlavorConfig _instance;
 
   factory FlavorConfig({
     required Flavor flavor,
