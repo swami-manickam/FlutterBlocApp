@@ -19,7 +19,7 @@ class ProductListWidget extends StatelessWidget {
 
   Widget _buildHorizontalList() {
     return SizedBox(
-      height: 300,
+      height: 250,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
@@ -31,6 +31,7 @@ class ProductListWidget extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             /*color: Colors.green,*/
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.only(
@@ -40,7 +41,7 @@ class ProductListWidget extends StatelessWidget {
                       bottomRight: Radius.circular(15)),
                   child: Image.network(
                     productDetails.drinks[index].strDrinkThumb ?? "",
-                    height: 150,
+                    height: 200,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),

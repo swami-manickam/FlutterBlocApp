@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/domain/navigationtab/landing_page_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_event.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_state.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/presentation/login_screen.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/home_page.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/screens/login_screen.dart';
+import 'package:flutter_sample_bloc_pattern/utils/app_preferences.dart';
 import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
 
-import '../domain/login/login_bloc.dart';
-import '../domain/navigationtab/landing_page_bloc.dart';
-
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen>
@@ -21,9 +21,14 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController animationController;
   late Animation<double> animation;
 
+  late final SplashBloc _splashBloc;
+  late final LandingPageBloc landingPageBloc;
+
   @override
   void initState() {
     super.initState();
+    _splashBloc = SplashBloc();
+    landingPageBloc = LandingPageBloc();
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 4),
@@ -41,8 +46,10 @@ class _SplashScreenState extends State<SplashScreen>
     // Listen for animation completion
     animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        // Notify Bloc about completion
-        BlocProvider.of<SplashBloc>(context).add(SplashStarted());
+        // Delay the dispatch of SplashStarted event after the widget is built
+        WidgetsBinding.instance!.addPostFrameCallback((_) {
+          BlocProvider.of<SplashBloc>(context).add(SplashStarted());
+        });
       }
     });
   }
@@ -50,30 +57,35 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void dispose() {
     animationController.dispose();
+    landingPageBloc.close();
+    _splashBloc.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final splashBloc = BlocProvider.of<SplashBloc>(context);
-    splashBloc.add(SplashStarted());
-    final LandingPageBloc landingPageBloc = LandingPageBloc();
-    final LoginBloc loginScreenBloc = LoginBloc();
+    /*final splashBloc = BlocProvider.of<SplashBloc>(context);
+    // Dispatch the SplashStarted event when the widget is built
+    splashBloc.add(SplashStarted());*/
 
     return Scaffold(
       body: Center(
         child: BlocListener<SplashBloc, SplashState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             if (state is SplashNavigationCompleted) {
               // Navigate to the next screen
+
+              var isLoggedIn = await getLogInStatusPref();
+
               Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => BlocProvider<LoginBloc>.value(
-                      value: loginScreenBloc,
-                      child: const LoginScreen(),
-                    ),
-                  ));
+                context,
+                MaterialPageRoute(
+                  builder: (_) => BlocProvider<LandingPageBloc>.value(
+                    value: landingPageBloc,
+                    child: isLoggedIn ? HomePage() : LoginScreen(),
+                  ),
+                ),
+              );
             }
           },
           child: buildSplashScreen(),
@@ -123,6 +135,3 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 }
-
-/*MaterialPageRoute(
-                    builder: (context) => HomePage() */ /*UserDetailsScreen()*/ /*),*/
