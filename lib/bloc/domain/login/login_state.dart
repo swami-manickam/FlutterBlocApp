@@ -8,7 +8,15 @@ class LoginInitial extends LoginState {}
 
 class LoginLoading extends LoginState {}
 
-class LoginSuccess extends LoginState {}
+class LoginSuccess extends LoginState {
+  LoginDetails loginDetails;
+  LoginSuccess(this.loginDetails);
+
+  @override
+  String toString() {
+    return "LoginDetailsReceived";
+  }
+}
 
 class LoginError extends LoginState {
   final String errorMessage;

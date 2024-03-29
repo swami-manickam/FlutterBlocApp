@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/data/repository/auth/login_screen_repository.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/data/repository/auth/register_screen_repository.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/login/login_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/register/register_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/presentation/login_screen.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/screens/login_screen.dart';
 import 'package:flutter_sample_bloc_pattern/components/custom_button.dart';
 import 'package:flutter_sample_bloc_pattern/components/custom_text_field.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,8 +30,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void initState() {
-    _registerScreenBloc = RegisterBloc();
-    _loginScreenBloc = LoginBloc();
+    _registerScreenBloc =
+        RegisterBloc(registerScreenRepository: RegisterScreenRepository());
+    _loginScreenBloc =
+        LoginBloc(loginScreenRepository: LoginScreenRepository());
     super.initState();
   }
 
@@ -147,7 +151,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         btnLabel: 'Register',
                         onTap: () {
                           if (_formkey.currentState!.validate()) {
-                            _registerScreenBloc.add(RegisterButtonPressed());
+                            _registerScreenBloc.add(RegisterButtonPressed(
+                                userName: _usernamecontroller.text.toString(),
+                                emailId: _emailitingcontroller.text.toString(),
+                                password:
+                                    _passwordeditingcontroller.text.toString(),
+                                device: '',
+                                deviceToken: ''));
                           }
                         },
                         loading: state is RegisterLoading?,

@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter_sample_bloc_pattern/bloc/data/model/product_details.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,7 +17,6 @@ class ProductListProvider {
       final resData = ProductDetails.fromJson(jsonDecode(response.body));
       return resData;
     }
-    throw Exception('Not able to fetch the data: ' + response.body);
+    throw Exception('Not able to fetch the data: ${response.body}');
   }
-
 }

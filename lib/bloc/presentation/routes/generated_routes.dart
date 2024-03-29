@@ -13,7 +13,7 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => BlocProvider<LandingPageBloc>.value(
             value: landingPageBloc,
-            child: const HomePage(),
+            child: HomePage(),
           ),
         );
       default:
