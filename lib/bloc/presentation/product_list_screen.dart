@@ -5,8 +5,10 @@ import 'package:flutter_sample_bloc_pattern/bloc/domain/product/product_list_blo
 import 'package:flutter_sample_bloc_pattern/bloc/presentation/widgets/product_list_widgets.dart';
 
 class ProductListScreen extends StatefulWidget {
+  const ProductListScreen({super.key});
+
   @override
-  _ProductListScreenState createState() => _ProductListScreenState();
+  State<ProductListScreen> createState() => _ProductListScreenState();
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {

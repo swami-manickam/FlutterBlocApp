@@ -5,8 +5,10 @@ import 'package:flutter_sample_bloc_pattern/bloc/domain/user_details_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/presentation/widgets/user_details_widget.dart';
 
 class UserDetailsScreen extends StatefulWidget {
+  const UserDetailsScreen({super.key});
+
   @override
-  _UserDetailsScreenState createState() => _UserDetailsScreenState();
+  State<UserDetailsScreen> createState() => _UserDetailsScreenState();
 }
 
 class _UserDetailsScreenState extends State<UserDetailsScreen> {
