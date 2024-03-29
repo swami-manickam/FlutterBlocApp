@@ -18,7 +18,7 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
     icon: Icon(Icons.grid_3x3),
     label: 'Category',
   ),
-  BottomNavigationBarItem(
+  /* BottomNavigationBarItem(
     icon: Icon(Icons.search_outlined),
     label: 'Search',
   ),
@@ -29,29 +29,35 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
   BottomNavigationBarItem(
     icon: Icon(Icons.shopping_bag_outlined),
     label: 'Cart',
-  ),
+  ),*/
 ];
 
 List<Widget> bottomNavScreen = <Widget>[
   BlocProvider(
     create: (context) =>
         ProductListBloc(productListRepository: ProductListRepository()),
-    child: ProductListScreen(),
+    child: const ProductListScreen(),
+  ),
+  BlocProvider(
+    create: (context) =>
+        UserDetailsBloc(userDetailsRepository: UserDetailsRepository()),
+    child: const UserDetailsScreen(),
+  ),
+/*  BlocProvider(
+    create: (context) =>
+        UserDetailsBloc(userDetailsRepository: UserDetailsRepository()),
+    child: UserDetailsScreen(),
   ),
   BlocProvider(
     create: (context) =>
         UserDetailsBloc(userDetailsRepository: UserDetailsRepository()),
     child: UserDetailsScreen(),
   ),
-  const Text(
-    'Index 2: Search',
-  ),
-  const Text(
-    'Index 3: Favourite',
-  ),
-  const Text(
-    'Index 4: Cart',
-  ),
+  BlocProvider(
+    create: (context) =>
+        UserDetailsBloc(userDetailsRepository: UserDetailsRepository()),
+    child: UserDetailsScreen(),
+  ),*/
 ];
 
 class HomePage extends StatelessWidget {

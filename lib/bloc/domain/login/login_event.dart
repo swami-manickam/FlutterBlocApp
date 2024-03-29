@@ -15,4 +15,14 @@ class PasswordChanged extends LoginEvent {
   PasswordChanged(this.password);
 }
 
-class LoginButtonPressed extends LoginEvent {}
+class LoginButtonPressed extends LoginEvent {
+  final String email;
+  final String password;
+  final String device;
+  final String deviceToken;
+  LoginButtonPressed(
+      {required this.email,
+      required this.password,
+      required this.device,
+      required this.deviceToken});
+}

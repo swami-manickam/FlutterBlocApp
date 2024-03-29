@@ -26,4 +26,17 @@ class ConfirmPasswordChanged extends RegisterEvent {
   ConfirmPasswordChanged(this.confirmPassword);
 }
 
-class RegisterButtonPressed extends RegisterEvent {}
+class RegisterButtonPressed extends RegisterEvent {
+  final String userName;
+  final String emailId;
+  final String password;
+  final String device;
+  final String deviceToken;
+
+  RegisterButtonPressed(
+      {required this.userName,
+      required this.emailId,
+      required this.password,
+      required this.device,
+      required this.deviceToken});
+}

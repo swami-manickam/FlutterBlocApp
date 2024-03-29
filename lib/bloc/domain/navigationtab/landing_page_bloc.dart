@@ -11,6 +11,9 @@ class LandingPageBloc extends Bloc<LandingPageEvent, LandingPageState> {
         if (kDebugMode) {
           print(event.tabIndex);
         }
+        if (kDebugMode) {
+          print("tab item: ${event.tabIndex}");
+        }
         emit(LandingPageInitial(tabIndex: event.tabIndex));
       }
     });
