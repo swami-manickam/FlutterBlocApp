@@ -1,12 +1,15 @@
 part of 'landing_page_bloc.dart';
 
 @immutable
-abstract class LandingPageState {
-  final int tabIndex;
-
-  const LandingPageState({required this.tabIndex});
-}
+sealed class LandingPageState {}
 
 class LandingPageInitial extends LandingPageState {
-  const LandingPageInitial({required super.tabIndex});
+  final int tabIndex;
+  final String appBarName;
+
+  LandingPageInitial({required this.appBarName, required this.tabIndex});
+}
+
+class TabChangeActionState extends LandingPageInitial {
+  TabChangeActionState({required super.appBarName, required super.tabIndex});
 }
