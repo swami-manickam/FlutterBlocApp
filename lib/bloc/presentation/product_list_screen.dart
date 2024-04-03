@@ -27,13 +27,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        /*appBar: AppBar(
           title: Text('Flutter BLOC Demo'),
-        ),
+        ),*/
         body: Align(
-          alignment: Alignment.topCenter,
-          child: _buildProductList(), // replace 'Widget' with your widget
-        ));
+      alignment: Alignment.topCenter,
+      child: _buildProductList(), // replace 'Widget' with your widget
+    ));
   }
 
   Widget _buildProductList() {

@@ -4,7 +4,7 @@ import 'package:flutter_sample_bloc_pattern/bloc/domain/navigationtab/landing_pa
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_event.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_state.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/presentation/home_page.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/landing_page.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/presentation/screens/login_screen.dart';
 import 'package:flutter_sample_bloc_pattern/utils/app_preferences.dart';
 import 'package:flutter_sample_bloc_pattern/utils/colors.dart';

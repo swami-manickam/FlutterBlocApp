@@ -1,10 +1,19 @@
 part of 'landing_page_bloc.dart';
 
 @immutable
-abstract class LandingPageEvent {}
+sealed class LandingPageEvent {}
 
-class TabChange extends LandingPageEvent {
+class LandingPageFetchUserDataEvent extends LandingPageEvent {
   final int tabIndex;
+  final String appBarName;
 
-  TabChange({required this.tabIndex});
+  LandingPageFetchUserDataEvent(
+      {required this.tabIndex, required this.appBarName});
+}
+
+class LandingPageTabChangeEvent extends LandingPageEvent {
+  final int tabIndex;
+  final String appBarName;
+
+  LandingPageTabChangeEvent({required this.tabIndex, required this.appBarName});
 }

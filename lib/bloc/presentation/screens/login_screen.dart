@@ -5,7 +5,7 @@ import 'package:flutter_sample_bloc_pattern/bloc/data/repository/auth/register_s
 import 'package:flutter_sample_bloc_pattern/bloc/domain/login/login_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/navigationtab/landing_page_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/domain/register/register_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/presentation/home_page.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/landing_page.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/presentation/screens/register_screen.dart';
 import 'package:flutter_sample_bloc_pattern/components/custom_button.dart';
 import 'package:flutter_sample_bloc_pattern/components/custom_text_field.dart';
