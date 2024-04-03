@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_bloc_pattern/bloc/data/model/product_details.dart';
+import 'package:flutter_sample_bloc_pattern/components/search_field.dart';
+import 'package:flutter_sample_bloc_pattern/config/size_config.dart';
 
 class ProductListWidget extends StatelessWidget {
   final ProductDetails productDetails;
@@ -8,13 +10,20 @@ class ProductListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        _buildHorizontalList(),
-        _buildScrollVerticalList(),
-      ],
-    );
+    return SingleChildScrollView(
+        child: SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: Column(
+        children: [
+          SizedBox(height: getRelativeHeight(0.025)),
+          SearchField(),
+          SizedBox(height: getRelativeHeight(0.025)),
+          _buildHorizontalList(),
+          SizedBox(height: getRelativeHeight(0.025)),
+          _buildScrollVerticalList(),
+        ],
+      ),
+    ));
   }
 
   Widget _buildHorizontalList() {
