@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/presentation/home_page.dart';
+import 'package:flutter_sample_bloc_pattern/bloc/presentation/landing_page.dart';
 
 import '../../domain/navigationtab/landing_page_bloc.dart';
 
