@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/data/repository/auth/login_screen_repository.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/data/repository/product_list_repository.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/domain/login/login_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/domain/navigationtab/landing_page_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/domain/product/product_list_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/domain/splashbloc/splash_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/bloc/presentation/splash_screen.dart';
+import 'package:flutter_sample_bloc_pattern/data/repository/auth/login_screen_repository.dart';
+import 'package:flutter_sample_bloc_pattern/data/repository/product_list_repository.dart';
+import 'package:flutter_sample_bloc_pattern/domain/login/login_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/domain/navigationtab/landing_page_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/domain/product/product_list_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/domain/splashbloc/splash_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 extension Captilization on String {

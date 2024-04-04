@@ -20,7 +20,6 @@ class DateTimeUtils {
     // }
   }
 
-
   static int calculateDateDifference(DateTime date) {
     final now = DateTime.now();
     return DateTime(date.year, date.month, date.day)
@@ -28,8 +27,9 @@ class DateTimeUtils {
         .inDays;
   }
 
-  static int calculateAverage(List<int> nums) {
-    final avg = nums.reduce((num a, num b) => a + b) / nums.length;
+  static int calculateAverage(List<int> numList) {
+    final sum = numList.reduce((a, b) => a + b);
+    final avg = sum / numList.length;
     return avg.toInt();
   }
 }
