@@ -6,7 +6,9 @@ import 'package:flutter_sample_bloc_pattern/domain/login/login_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/navigationtab/landing_page_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/product/product_list_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/splashbloc/splash_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/splash_screen.dart';
+import 'package:flutter_sample_bloc_pattern/utils/app_preferences.dart';
 import 'package:provider/provider.dart';
 
 extension Captilization on String {
@@ -29,6 +31,10 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        Provider<SplashBloc>(
+          create: (_) => SplashBloc(),
+          dispose: (_, bloc) => bloc.close(),
+        ),
         Provider<LoginBloc>(
           create: (_) =>
               LoginBloc(loginScreenRepository: LoginScreenRepository()),
@@ -37,7 +43,7 @@ void main() {
         ),
         Provider<LandingPageBloc>(
           create: (_) =>
-              LandingPageBloc(), // Your LoginBloc initialization logic
+              LandingPageBloc(), // Your LandingBloc initialization logic
           dispose: (_, bloc) => bloc.close(),
         ),
         Provider<ProductListBloc>(
@@ -64,12 +70,45 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Scaffold(
-          appBar: null,
-          body: BlocProvider(
+        home: MyHomePage());
+
+    /*BlocProvider(
             create: (context) => SplashBloc(),
             child: const SplashScreen(),
-          ),
-        ));
+          )*/
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _isOnboarded = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCounter();
+  }
+
+  _loadCounter() async {
+    int onboardingStatus = await getOnboardingPref();
+    setState(() {
+      _isOnboarded = onboardingStatus;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: null,
+        body: _isOnboarded == 1
+            ? BlocProvider(
+                create: (context) => SplashBloc(), child: const SplashScreen())
+            : const OnboardingScreen());
   }
 }
