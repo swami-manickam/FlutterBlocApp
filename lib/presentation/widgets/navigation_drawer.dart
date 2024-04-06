@@ -76,7 +76,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
               Navigator.of(context).popAndPushNamed("settings");
             },
             child: const Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(8),
               child: ListTile(
                 leading: Icon(Icons.settings),
                 title: Text(
@@ -88,30 +88,29 @@ class _HomeDrawerState extends State<HomeDrawer> {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(Icons.help),
-              title: Text(
-                "Support",
-                style: TextStyle(
-                    color: Color.fromARGB(255, 92, 98, 111),
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: InkWell(
-              onTap: () async {
-                /*if (await canLaunchUrl(repoUrl)) {
-                  await launchUrl(repoUrl);
-                } else {
-                  showUnableToLaunchUtlError();
-                  throw throw Exception('Could not launch $repoUrl');
-                }*/
+          InkWell(
+              onTap: () {
+                Navigator.of(context).popAndPushNamed("support");
               },
-              child: const ListTile(
+              child: const Padding(
+                padding: EdgeInsets.all(8),
+                child: ListTile(
+                  leading: Icon(Icons.help),
+                  title: Text(
+                    "Support",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 92, 98, 111),
+                        fontWeight: FontWeight.w700),
+                  ),
+                ),
+              )),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).popAndPushNamed("aboutus");
+            },
+            child: const Padding(
+              padding: EdgeInsets.all(8),
+              child: ListTile(
                 leading: Icon(Icons.announcement_rounded),
                 title: Text("About Us",
                     style: TextStyle(
