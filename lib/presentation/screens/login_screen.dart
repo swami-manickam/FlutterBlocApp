@@ -228,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(
                           builder: (_) => BlocProvider<LandingPageBloc>.value(
                             value: landingPageBloc,
-                            child: HomePage(),
+                            child: const HomePage(),
                           ),
                         ),
                       );
