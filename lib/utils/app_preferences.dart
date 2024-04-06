@@ -1,5 +1,16 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+saveOnboardingPref(int status) async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  preferences.setInt("isOnboarded", status);
+  preferences.commit();
+}
+
+Future<int> getOnboardingPref() async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  return preferences.getInt("isOnboarded") ?? 0;
+}
+
 saveUserDetailsPref(int value, String email, String name, String id) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   preferences.setInt("value", value);
