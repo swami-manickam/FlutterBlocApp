@@ -3,6 +3,8 @@ import 'package:flutter_sample_bloc_pattern/components/search_field.dart';
 import 'package:flutter_sample_bloc_pattern/config/size_config.dart';
 import 'package:flutter_sample_bloc_pattern/data/model/product_details.dart';
 
+import '../../components/circle_tabs.dart';
+
 class ProductListWidget extends StatelessWidget {
   final ProductDetails productDetails;
 
@@ -22,17 +24,86 @@ class ProductListWidget extends StatelessWidget {
           SizedBox(height: getRelativeHeight(0.025)),
           _buildHorizontalList(),
           SizedBox(height: getRelativeHeight(0.025)),
+          _buildCategoryList(context),
+          SizedBox(height: getRelativeHeight(0.025)),
           _buildScrollVerticalList(),
         ],
       ),
     ));
   }
 
+  Widget _buildCategoryList(BuildContext context) {
+    double hori = 25;
+    double vert = 15;
+
+    return SizedBox(
+      height: 100,
+      child: ListView(scrollDirection: Axis.horizontal, children: [
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: hori, vertical: vert),
+            child: const SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  //It will be functional on next update
+                  CircleTab(
+                    icon: Icons.construction,
+                    isSelected: true,
+                    data: "All",
+                    // iconSize: 20,
+                  ),
+                  SizedBox(width: 20),
+                  CircleTab(
+                    icon: Icons.construction,
+                    isSelected: false,
+                    data: "Pongal Mix",
+
+                    // iconSize: 20,
+                  ),
+                  SizedBox(width: 20),
+                  CircleTab(
+                    icon: Icons.construction,
+                    isSelected: false,
+                    data: "Broken Mix",
+                    // iconSize: 20,
+                  ),
+                  SizedBox(width: 20),
+                  CircleTab(
+                    icon: Icons.construction,
+                    isSelected: false,
+                    data: "Podi Mix",
+                    // iconSize: 20,
+                  ),
+                  SizedBox(width: 20),
+                  CircleTab(
+                    icon: Icons.construction,
+                    isSelected: false,
+                    data: "Podi Mix",
+                    // iconSize: 20,
+                  ),
+                  SizedBox(width: 20),
+                  CircleTab(
+                    icon: Icons.construction,
+                    isSelected: false,
+                    data: "Podi Mix",
+                    // iconSize: 20,
+                  ),
+                  SizedBox(width: 20),
+                ],
+              ),
+            ),
+          )
+        ]),
+      ]),
+    );
+  }
+
   Widget _buildHorizontalList() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
       child: SizedBox(
-        height: 250,
+        height: 220,
         child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
@@ -40,8 +111,8 @@ class ProductListWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             return Container(
               width: 300,
-              height: 200,
-              padding: const EdgeInsets.all(8.0),
+              height: 180,
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
               /*color: Colors.green,*/
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -54,12 +125,12 @@ class ProductListWidget extends StatelessWidget {
                         bottomRight: Radius.circular(15)),
                     child: Image.network(
                       productDetails.drinks[index].strDrinkThumb ?? "",
-                      height: 200,
+                      height: 180,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const SizedBox(height: 8.0),
+                  /* const SizedBox(height: 8.0),*/
                 ],
               ),
             );
