@@ -27,9 +27,11 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar:
+          null /*AppBar(
         title: const Text('Flutter Product App'),
-      ),
+      )*/
+      ,
       body: Center(
         child: BlocBuilder(
             bloc: _userDetailsBloc,
