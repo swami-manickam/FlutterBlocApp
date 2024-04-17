@@ -5,8 +5,7 @@ import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
 class UserDetailsWidget extends StatelessWidget {
   final UserDetails userDetails;
 
-  const UserDetailsWidget({Key? key, required this.userDetails})
-      : super(key: key);
+  const UserDetailsWidget({super.key, required this.userDetails});
 
   @override
   Widget build(BuildContext context) {
