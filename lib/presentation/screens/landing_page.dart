@@ -4,7 +4,9 @@ import 'package:flutter_sample_bloc_pattern/domain/navigationtab/landing_page_bl
 import 'package:flutter_sample_bloc_pattern/presentation/screens/product_details_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/product_list_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/user_details_screen.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/widgets/favourite_list_widgets.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/widgets/navigation_drawer.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/widgets/profile_widgets.dart';
 
 import '../../../constants/constants.dart';
 
@@ -28,8 +30,9 @@ class _LandingPageState extends State<HomePage> {
     List<Widget> pages = [
       const ProductListScreen(),
       const UserDetailsScreen(),
+      const FavouriteListWidget(),
       const ProductDetailScreen(),
-      const UserDetailsScreen(),
+      const UserProfileWidget(),
     ];
     return BlocConsumer<LandingPageBloc, LandingPageInitial>(
         bloc: landingPageBloc,
