@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_bloc_pattern/constants/constants.dart';
 import 'package:flutter_sample_bloc_pattern/data/model/user_details.dart';
 
 class ProductDetailWidget extends StatelessWidget {
@@ -33,8 +34,7 @@ class ProductDetailWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               image: const DecorationImage(
-                                  image: NetworkImage(
-                                      'https://plus.unsplash.com/premium_photo-1664648234285-3b238ab7f17b?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+                                  image: NetworkImage(productUrl),
                                   fit: BoxFit.cover)),
                           child: Container(
                             decoration: BoxDecoration(
