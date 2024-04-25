@@ -4,12 +4,14 @@ import 'package:flutter_sample_bloc_pattern/data/repository/auth/login_screen_re
 import 'package:flutter_sample_bloc_pattern/data/repository/product_list_repository.dart';
 import 'package:flutter_sample_bloc_pattern/domain/login/login_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/navigationtab/landing_page_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/domain/onboard/onboard_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/product/product_list_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/splashbloc/splash_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/splash_screen.dart';
 import 'package:flutter_sample_bloc_pattern/utils/app_preferences.dart';
 import 'package:provider/provider.dart';
+
+import 'presentation/screens/onboarding/onboard_screen.dart';
 
 extension Captilization on String {
   String capitalizeFirstLetter() {
@@ -31,6 +33,10 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        Provider<OnboardingBloc>(
+          create: (_) => OnboardingBloc(),
+          dispose: (_, bloc) => bloc.close(),
+        ),
         Provider<SplashBloc>(
           create: (_) => SplashBloc(),
           dispose: (_, bloc) => bloc.close(),
@@ -87,7 +93,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _isOnboarded = 0;
+  int _isOnboarded = 1;
 
   @override
   void initState() {
@@ -109,6 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
         body: _isOnboarded == 1
             ? BlocProvider(
                 create: (context) => SplashBloc(), child: const SplashScreen())
-            : const OnboardingScreen());
+            : BlocProvider(
+                create: (context) => OnboardingBloc(),
+                child: const OnboardingScreenNew()));
   }
 }
