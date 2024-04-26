@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_bloc_pattern/data/model/user_details.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/widgets/product_detail_widgets_new.dart';
 
 class UserDetailsWidget extends StatelessWidget {
   final UserDetails userDetails;
@@ -19,7 +20,12 @@ class UserDetailsWidget extends StatelessWidget {
       children: List.generate(
         15,
         (index) => InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ProductWidgetDetailNew()));
+          },
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.lightBlue, width: 5.0),
