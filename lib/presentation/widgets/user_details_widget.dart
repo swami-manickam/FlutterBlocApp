@@ -9,7 +9,16 @@ class UserDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildProduct(context);
+    return SingleChildScrollView(
+        child: SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: Column(
+        children: [
+          _buildProduct(context),
+          // ProfileCard(userDetails: userDetails)
+        ],
+      ),
+    ));
   }
 
   Widget _buildProduct(BuildContext context) {
