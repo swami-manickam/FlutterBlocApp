@@ -26,6 +26,7 @@ class UserDetailsWidget extends StatelessWidget {
       shrinkWrap: true,
       crossAxisCount: 2,
       childAspectRatio: 0.78,
+      physics: const NeverScrollableScrollPhysics(),
       children: List.generate(
         15,
         (index) => InkWell(
