@@ -8,8 +8,8 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 580,
-      width: 340,
+      height: 280,
+      width: 250,
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Stack(
         children: [
@@ -25,8 +25,8 @@ class ProfileCard extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: Container(
-              height: 80,
-              width: 340,
+              height: 100,
+              width: MediaQuery.sizeOf(context).width,
               decoration: ShapeDecoration(
                 color: Colors.white,
                 shape: RoundedRectangleBorder(

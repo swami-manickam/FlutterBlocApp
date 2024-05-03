@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sample_bloc_pattern/components/search_field.dart';
 import 'package:flutter_sample_bloc_pattern/config/size_config.dart';
 import 'package:flutter_sample_bloc_pattern/data/model/product_details.dart';
+import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/circle_tabs.dart';
 
@@ -155,8 +157,8 @@ class ProductListWidget extends StatelessWidget {
                     horizontal: 10.0, vertical: 10.0),
                 padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 3.0),
-                    color: Colors.grey,
+                    border: Border.all(color: secondaryColor, width: 3.0),
+                    color: secondaryColor,
                     borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   children: [
@@ -179,16 +181,26 @@ class ProductListWidget extends StatelessWidget {
                         SizedBox(
                           child: Row(
                             children: [
-                              Text(productDetails.drinks[index].strCategory ??
-                                  "")
+                              Text(
+                                  productDetails.drinks[index].strCategory ??
+                                      "",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w700))
                             ],
                           ),
                         ),
                         SizedBox(
                           child: Row(
                             children: [
-                              Text(productDetails.drinks[index].strAlcoholic ??
-                                  "")
+                              Text(
+                                  productDetails.drinks[index].strAlcoholic ??
+                                      "",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w700))
                             ],
                           ),
                         ),
@@ -198,6 +210,10 @@ class ProductListWidget extends StatelessWidget {
                               child: Text(
                                 productDetails.drinks[index].strInstructions ??
                                     "",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
                                 overflow: TextOverflow.clip,
                               ),
                             )
