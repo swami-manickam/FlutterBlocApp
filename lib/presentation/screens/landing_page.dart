@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/navigationtab/landing_page_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/screens/cateogires_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/product_details_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/product_list_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/user_details_screen.dart';
@@ -64,7 +65,12 @@ class _LandingPageState extends State<HomePage> {
                     padding: const EdgeInsets.only(right: 16.0),
                     child: IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "notifications");
+                          //Navigator.pushNamed(context, "notifications");
+
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CategoriesScreen()));
                         },
                         icon: const Icon(Icons.notifications)),
                   )
