@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_bloc_pattern/data/model/user_details.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/widgets/product_detail_widgets_new.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/widgets/profile_card.dart';
+import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
 
 class UserDetailsWidget extends StatelessWidget {
   final UserDetails userDetails;
@@ -10,15 +12,15 @@ class UserDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: SizedBox(
-      height: MediaQuery.of(context).size.height,
+      /* child: SizedBox(
+      height: MediaQuery.of(context).size.height,*/
       child: Column(
         children: [
           _buildProduct(context),
-          // ProfileCard(userDetails: userDetails)
+          ProfileCard(userDetails: userDetails)
         ],
       ),
-    ));
+    );
   }
 
   Widget _buildProduct(BuildContext context) {
@@ -38,8 +40,8 @@ class UserDetailsWidget extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.lightBlue, width: 5.0),
-              color: Colors.lightBlue,
+              border: Border.all(color: secondaryColor, width: 5.0),
+              color: secondaryColor,
               borderRadius: BorderRadius.circular(10),
             ),
             margin:

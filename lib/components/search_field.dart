@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({super.key});
@@ -22,7 +23,7 @@ class _SearchFieldState extends State<SearchField> {
         child: TextField(
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 10.0),
-            fillColor: Colors.grey,
+            fillColor: secondaryColor,
             filled: true,
             hintText: "Search Products",
             hintStyle: const TextStyle(
