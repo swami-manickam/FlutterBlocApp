@@ -4,6 +4,8 @@ import 'package:flutter_sample_bloc_pattern/domain/news/news_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+import '../../utils/colors.dart';
+
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
 
@@ -27,6 +29,8 @@ class _CategoryScreenState extends State<CategoriesScreen> {
   @override
   void initState() {
     super.initState();
+
+    context.read<NewsBloc>().add(NewsCategories('categoryName'));
   }
 
   @override
@@ -42,20 +46,29 @@ class _CategoryScreenState extends State<CategoriesScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: 50,
+              height: 45,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: categoriesList.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          categoryName = categoriesList[index];
+                        });
+                        context.read<NewsBloc>()
+                          ..add(NewsCategories(categoryName));
+                      },
                       child: Padding(
                         padding: EdgeInsets.only(right: 12),
                         child: Container(
-                          decoration: BoxDecoration(
-                              color: categoryName == categoriesList[index]
-                                  ? Colors.blue
-                                  : Colors.grey),
+                          decoration: ShapeDecoration(
+                            color: categoryName == categoriesList[index]
+                                ? Colors.blue
+                                : Colors.grey,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                          ),
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 12),
                             child: Center(
@@ -71,7 +84,7 @@ class _CategoryScreenState extends State<CategoriesScreen> {
                     );
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             BlocBuilder<NewsBloc, NewsState>(
@@ -86,7 +99,6 @@ class _CategoryScreenState extends State<CategoriesScreen> {
 
                   case Status.failure:
                     return Text(state.categoriesMessage.toString());
-
                   case Status.success:
                     return Expanded(
                       child: ListView.builder(
@@ -99,79 +111,90 @@ class _CategoryScreenState extends State<CategoriesScreen> {
                                 .toString());
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 15),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.network(
-                                      state.newsCategoriesList!.articles![index]
-                                          .urlToImage
-                                          .toString(),
-                                      fit: BoxFit.cover,
-                                      height: height * .18,
-                                      width: width * .3,
-                                      /* placeholder: (context, url) => Container(
-                                        child: Center(
-                                          child: ClipOval(),
+                              child: Container(
+                                decoration: ShapeDecoration(
+                                    color: secondaryColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    )),
+                                child: Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          bottomLeft: Radius.circular(10)),
+                                      child: Image.network(
+                                        state.newsCategoriesList!
+                                            .articles![index].urlToImage
+                                            .toString(),
+                                        fit: BoxFit.cover,
+                                        height: height * .18,
+                                        width: width * .3,
+                                        errorBuilder: (context, url, error) =>
+                                            Image.asset(
+                                                'assets/images/ic_no_data.jpg',
+                                                fit: BoxFit.cover,
+                                                height: height * .18,
+                                                width: width * .3),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        height: height * .18,
+                                        padding: const EdgeInsets.only(
+                                            left: 15,
+                                            right: 5,
+                                            top: 5,
+                                            bottom: 5),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              state.newsCategoriesList!
+                                                  .articles![index].title
+                                                  .toString(),
+                                              maxLines: 4,
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 15,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
+                                            Spacer(),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  child: Text(
+                                                    state
+                                                        .newsCategoriesList!
+                                                        .articles![index]
+                                                        .source!
+                                                        .name
+                                                        .toString(),
+                                                    style: GoogleFonts.poppins(
+                                                        fontSize: 14,
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  dateFormat.format(dateTime),
+                                                  style: GoogleFonts.poppins(
+                                                      fontSize: 15,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                              ],
+                                            )
+                                          ],
                                         ),
                                       ),
-                                      errorWidget: (context, url, error) =>
-                                          Icon(
-                                        Icons.error_outline,
-                                        color: Colors.red,
-                                      ),*/
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      height: height * .18,
-                                      padding: EdgeInsets.only(left: 15),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            state.newsCategoriesList!
-                                                .articles![index].title
-                                                .toString(),
-                                            maxLines: 3,
-                                            style: GoogleFonts.poppins(
-                                                fontSize: 15,
-                                                color: Colors.black54,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                          Spacer(),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  state
-                                                      .newsCategoriesList!
-                                                      .articles![index]
-                                                      .source!
-                                                      .name
-                                                      .toString(),
-                                                  style: GoogleFonts.poppins(
-                                                      fontSize: 14,
-                                                      color: Colors.black54,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              ),
-                                              Text(
-                                                dateFormat.format(dateTime),
-                                                style: GoogleFonts.poppins(
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                ],
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                           }),

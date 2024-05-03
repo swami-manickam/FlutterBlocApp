@@ -4,6 +4,7 @@ import 'package:flutter_sample_bloc_pattern/data/repository/auth/login_screen_re
 import 'package:flutter_sample_bloc_pattern/data/repository/product_list_repository.dart';
 import 'package:flutter_sample_bloc_pattern/domain/login/login_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/navigationtab/landing_page_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/domain/news/news_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/onboard/onboard_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/product/product_list_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/splashbloc/splash_bloc.dart';
@@ -56,6 +57,10 @@ void main() {
           create: (_) =>
               ProductListBloc(productListRepository: ProductListRepository()),
           // Your LoginBloc initialization logic
+          dispose: (_, bloc) => bloc.close(),
+        ),
+        Provider<NewsBloc>(
+          create: (_) => NewsBloc(),
           dispose: (_, bloc) => bloc.close(),
         ),
         // Add other providers if necessary
