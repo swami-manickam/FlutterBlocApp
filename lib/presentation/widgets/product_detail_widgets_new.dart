@@ -3,8 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
 
-class ProductWidgetDetailNew extends StatelessWidget {
+class ProductWidgetDetailNew extends StatefulWidget {
   const ProductWidgetDetailNew({super.key});
+
+  @override
+  State<ProductWidgetDetailNew> createState() => _ProductWidgetDetailNewState();
+}
+
+class _ProductWidgetDetailNewState extends State<ProductWidgetDetailNew> {
+  int quantity = 1;
+
+  void addQuantity() {
+    setState(() {
+      quantity++;
+    });
+  }
+
+  void removeQuantity() {
+    if (quantity > 1) {
+      setState(() {
+        quantity--;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +45,7 @@ class ProductWidgetDetailNew extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.pop(context);
+                      //Navigator.pop(context);
                     },
                     child: Container(
                       padding: EdgeInsets.all(8),
@@ -74,14 +95,14 @@ class ProductWidgetDetailNew extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  Container(
+                  /*Container(
                     height: 210,
                     width: 210,
                     margin: const EdgeInsets.only(top: 20, right: 70),
                     decoration: BoxDecoration(
                         color: secondaryColor,
                         borderRadius: BorderRadius.circular(10)),
-                  ),
+                  ),*/
                   Image.asset('assets/images/ic_millet.png',
                       height: 280, width: 280, fit: BoxFit.contain)
                 ],
@@ -118,32 +139,44 @@ class ProductWidgetDetailNew extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
-                              color: Colors.redAccent))
+                              color: secondaryColor))
                     ],
                   ),
                   Container(
-                    width: 90,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(
-                          CupertinoIcons.minus,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                        Text("1",
-                            style:
-                                TextStyle(fontSize: 16, color: Colors.white)),
-                        Icon(
-                          CupertinoIcons.plus,
-                          color: Colors.white,
-                          size: 20,
-                        )
-                      ],
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: 120,
+                      height: 40,
+                      padding: EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: EdgeInsets.only(right: 5),
+                      alignment: Alignment.centerRight,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          IconButton(
+                              onPressed: addQuantity,
+                              icon: Icon(
+                                CupertinoIcons.minus,
+                                color: Colors.white,
+                                size: 15,
+                              )),
+                          Text(quantity.toString(),
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.white)),
+                          IconButton(
+                            onPressed: removeQuantity,
+                            icon: Icon(
+                              CupertinoIcons.plus,
+                              color: Colors.white,
+                              size: 15,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -205,7 +238,7 @@ class ProductWidgetDetailNew extends StatelessWidget {
               children: [
                 Text(
                   "Add to cart",
-                  style: TextStyle(fontSize: 22, color: textColor),
+                  style: TextStyle(fontSize: 22, color: whiteColor),
                 ),
                 SizedBox(
                   width: 10,
