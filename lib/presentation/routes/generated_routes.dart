@@ -32,7 +32,7 @@ class RouteGenerator {
           ),
         );
       case "onBoarding":
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+        return MaterialPageRoute(builder: (_) => OnboardingScreen());
       case 'Home':
         return MaterialPageRoute(
           builder: (_) => BlocProvider<LandingPageBloc>.value(

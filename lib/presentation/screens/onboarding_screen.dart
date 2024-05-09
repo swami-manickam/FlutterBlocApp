@@ -7,8 +7,15 @@ import 'package:flutter_sample_bloc_pattern/presentation/screens/splash_screen.d
 import 'package:flutter_sample_bloc_pattern/utils/app_preferences.dart';
 import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
 
-class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key});
+class OnboardingScreen extends StatefulWidget {
+  OnboardingScreen({super.key});
+
+  @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
+  AppPreference prefsManager = AppPreference();
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +79,7 @@ class OnboardingScreen extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         //Navigator.of(context).pushNamed("Login");
-                        saveOnboardingPref(1);
+                        prefsManager.saveOnboardingPref(1);
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

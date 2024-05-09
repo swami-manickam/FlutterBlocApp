@@ -23,6 +23,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late final LoginBloc _loginScreenBloc;
+  AppPreference prefsManager = AppPreference();
 
   final _formkey = GlobalKey<FormState>();
   final TextEditingController _emaileditingcontroller = TextEditingController();
@@ -221,7 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       loading: state is LoginLoading?,
                     );
                   } else if (state is LoginSuccess) {
-                    saveUserLogInStatusPref(true);
+                    prefsManager.saveUserLogInStatusPref(true);
                     WidgetsBinding.instance!.addPostFrameCallback((_) {
                       Navigator.pushReplacement(
                         context,
