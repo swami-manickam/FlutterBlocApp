@@ -17,6 +17,7 @@ class OnboardingScreenNew extends StatefulWidget {
 
 class _OnboardingScreenNewState extends State<OnboardingScreenNew> {
   int _currentPageIndex = 0;
+  AppPreference prefsManager = AppPreference();
 
   late final LoginBloc loginScreenBloc;
   final PageController _pageController = PageController(initialPage: 0);
@@ -161,7 +162,7 @@ class _OnboardingScreenNewState extends State<OnboardingScreenNew> {
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeInOut);
                       } else {
-                        saveOnboardingPref(1);
+                        prefsManager.saveOnboardingPref(1);
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

@@ -91,7 +91,7 @@ class _ProductWidgetDetailNewState extends State<ProductWidgetDetailNew> {
               height: 15,
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.33,
+              height: MediaQuery.of(context).size.height * 0.25,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -146,7 +146,7 @@ class _ProductWidgetDetailNewState extends State<ProductWidgetDetailNew> {
                     alignment: Alignment.topRight,
                     child: Container(
                       width: 120,
-                      height: 40,
+                      height: 35,
                       padding: EdgeInsets.all(2),
                       decoration: BoxDecoration(
                           color: Colors.red,
@@ -158,7 +158,7 @@ class _ProductWidgetDetailNewState extends State<ProductWidgetDetailNew> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           IconButton(
-                              onPressed: addQuantity,
+                              onPressed: removeQuantity,
                               icon: Icon(
                                 CupertinoIcons.minus,
                                 color: Colors.white,
@@ -168,7 +168,7 @@ class _ProductWidgetDetailNewState extends State<ProductWidgetDetailNew> {
                               style:
                                   TextStyle(fontSize: 14, color: Colors.white)),
                           IconButton(
-                            onPressed: removeQuantity,
+                            onPressed: addQuantity,
                             icon: Icon(
                               CupertinoIcons.plus,
                               color: Colors.white,
