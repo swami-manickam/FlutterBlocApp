@@ -18,6 +18,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
+  AppPreference prefsManager = AppPreference();
   late AnimationController animationController;
   late Animation<double> animation;
 
@@ -75,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen>
             if (state is SplashNavigationCompleted) {
               // Navigate to the next screen
 
-              var isLoggedIn = await getLogInStatusPref();
+              var isLoggedIn = await prefsManager.getLogInStatusPref();
 
               Navigator.pushReplacement(
                 context,
