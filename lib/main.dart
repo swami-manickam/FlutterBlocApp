@@ -28,9 +28,10 @@ extension NumberParsing on String {
   }
 }
 
-void main() {
+void main() async {
   /*runApp(const MyApp());*/
-
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppPreference().initialize();
   runApp(
     MultiProvider(
       providers: [
@@ -100,6 +101,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _isOnboarded = 1;
 
+  AppPreference prefsManager = AppPreference();
+
   @override
   void initState() {
     super.initState();
@@ -107,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _loadCounter() async {
-    int onboardingStatus = await getOnboardingPref();
+    int onboardingStatus = await prefsManager.getOnboardingPref();
     setState(() {
       _isOnboarded = onboardingStatus;
     });
