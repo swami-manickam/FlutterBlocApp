@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/news/news_bloc.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/screens/news/custom_search_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-import '../../utils/colors.dart';
+import '../../../utils/colors.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
@@ -40,11 +41,17 @@ class _CategoryScreenState extends State<CategoriesScreen> {
     final height = MediaQuery.sizeOf(context).height * 1;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('News'),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
+            CustomSearchBar(),
+            SizedBox(
+              height: 10,
+            ),
             SizedBox(
               height: 45,
               child: ListView.builder(
