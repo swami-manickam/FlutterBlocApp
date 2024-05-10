@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/navigationtab/landing_page_bloc.dart';
-import 'package:flutter_sample_bloc_pattern/presentation/screens/cateogires_screen.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/screens/news/cateogires_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/product_details_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/product_list_screen.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/user_details_screen.dart';
