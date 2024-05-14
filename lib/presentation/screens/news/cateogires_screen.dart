@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/news/news_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/presentation/screens/news/custom_search_bar.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/screens/news/news_detail_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
@@ -116,94 +117,140 @@ class _CategoryScreenState extends State<CategoriesScreen> {
                                 .articles![index]
                                 .publishedAt
                                 .toString());
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 15),
-                              child: Container(
-                                decoration: ShapeDecoration(
-                                    color: secondaryColor,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    )),
-                                child: Row(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          bottomLeft: Radius.circular(10)),
-                                      child: Image.network(
-                                        state.newsCategoriesList!
-                                            .articles![index].urlToImage
-                                            .toString(),
-                                        fit: BoxFit.cover,
-                                        height: height * .18,
-                                        width: width * .3,
-                                        errorBuilder: (context, url, error) =>
-                                            Image.asset(
-                                                'assets/images/ic_no_data.jpg',
-                                                fit: BoxFit.cover,
-                                                height: height * .18,
-                                                width: width * .3),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        height: height * .18,
-                                        padding: const EdgeInsets.only(
-                                            left: 15,
-                                            right: 5,
-                                            top: 5,
-                                            bottom: 5),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              state.newsCategoriesList!
-                                                  .articles![index].title
-                                                  .toString(),
-                                              maxLines: 4,
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: 15,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w700),
-                                            ),
-                                            Spacer(),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                            return InkWell(
+                                onTap: () {
+                                  String newsImage = state.newsCategoriesList!
+                                      .articles![index].urlToImage
+                                      .toString();
+                                  String newsTitle = state.newsCategoriesList!
+                                      .articles![index].title
+                                      .toString();
+                                  String newsDate = state.newsCategoriesList!
+                                      .articles![index].publishedAt
+                                      .toString();
+                                  String newsAuthor = state.newsCategoriesList!
+                                      .articles![index].author
+                                      .toString();
+                                  String newsDesc = state.newsCategoriesList!
+                                      .articles![index].description
+                                      .toString();
+                                  String newsContent = state.newsCategoriesList!
+                                      .articles![index].content
+                                      .toString();
+                                  String newsSource = state.newsCategoriesList!
+                                      .articles![index].source!.name
+                                      .toString();
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              NewsDetailScreen(
+                                                  newsImage,
+                                                  newsTitle,
+                                                  newsDate,
+                                                  newsAuthor,
+                                                  newsDesc,
+                                                  newsContent,
+                                                  newsSource)));
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 15),
+                                  child: Container(
+                                    decoration: ShapeDecoration(
+                                        color: secondaryColor,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        )),
+                                    child: Row(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10),
+                                              bottomLeft: Radius.circular(10)),
+                                          child: Image.network(
+                                            state.newsCategoriesList!
+                                                .articles![index].urlToImage
+                                                .toString(),
+                                            fit: BoxFit.cover,
+                                            height: height * .18,
+                                            width: width * .3,
+                                            errorBuilder: (context, url,
+                                                    error) =>
+                                                Image.asset(
+                                                    'assets/images/ic_no_data.jpg',
+                                                    fit: BoxFit.cover,
+                                                    height: height * .18,
+                                                    width: width * .3),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            height: height * .18,
+                                            padding: const EdgeInsets.only(
+                                                left: 15,
+                                                right: 5,
+                                                top: 5,
+                                                bottom: 5),
+                                            child: Column(
                                               children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    state
-                                                        .newsCategoriesList!
-                                                        .articles![index]
-                                                        .source!
-                                                        .name
-                                                        .toString(),
-                                                    style: GoogleFonts.poppins(
-                                                        fontSize: 14,
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                ),
                                                 Text(
-                                                  dateFormat.format(dateTime),
+                                                  state.newsCategoriesList!
+                                                      .articles![index].title
+                                                      .toString(),
+                                                  maxLines: 4,
                                                   style: GoogleFonts.poppins(
                                                       fontSize: 15,
                                                       color: Colors.white,
                                                       fontWeight:
-                                                          FontWeight.w500),
+                                                          FontWeight.w700),
                                                 ),
+                                                Spacer(),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        state
+                                                            .newsCategoriesList!
+                                                            .articles![index]
+                                                            .source!
+                                                            .name
+                                                            .toString(),
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                fontSize: 14,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      dateFormat
+                                                          .format(dateTime),
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              fontSize: 15,
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
+                                                    ),
+                                                  ],
+                                                )
                                               ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ));
                           }),
                     );
                 }
