@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_bloc_pattern/components/items_slider.dart';
 import 'package:flutter_sample_bloc_pattern/constants/constants.dart';
 import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
 
@@ -25,7 +26,10 @@ class _FavouriteListWidgetState extends State<FavouriteListWidget> {
         children: List.generate(
           15,
           (index) => InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => ItemSlider(true)));
+            },
             child: Container(
               margin:
                   const EdgeInsets.only(bottom: 5, left: 0, right: 0, top: 5),
