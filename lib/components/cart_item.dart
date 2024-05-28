@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sample_bloc_pattern/utils/data.dart';
 
 class CartItemCard extends StatelessWidget {
-  final Food item;
+  final ProductData item;
   const CartItemCard({super.key, required this.item});
 
   @override
