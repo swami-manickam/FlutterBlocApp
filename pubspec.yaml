@@ -46,6 +46,8 @@ dependencies:
   shared_preferences: ^2.0.15
   equatable: ^2.0.0
   flutter_rating_bar: 4.0.1
+  flutter_staggered_animations: ^1.1.1
+  dotted_border: ^2.0.0+3
 
 
   # Flutter plugin providing detailed information about the device (make, model, etc), and
