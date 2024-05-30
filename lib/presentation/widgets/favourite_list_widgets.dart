@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample_bloc_pattern/components/items_slider.dart';
+import 'package:flutter_sample_bloc_pattern/components/custom/items_slider.dart';
 import 'package:flutter_sample_bloc_pattern/constants/constants.dart';
 import 'package:flutter_sample_bloc_pattern/utils/colors.dart';
 
