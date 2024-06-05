@@ -33,3 +33,11 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
     label: 'Profile',
   ),
 ];
+
+List<Widget> widgetItems = const <Widget>[
+  Icon(Icons.home, size: 26, color: Colors.white),
+  Icon(Icons.message, size: 26, color: Colors.white),
+  Icon(Icons.add, size: 26, color: Colors.white),
+  Icon(Icons.notifications, size: 26, color: Colors.white),
+  Icon(Icons.person, size: 26, color: Colors.white),
+];
