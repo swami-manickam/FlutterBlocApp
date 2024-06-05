@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sample_bloc_pattern/domain/navigationtab/landing_page_bloc.dart';
@@ -77,7 +78,19 @@ class _LandingPageState extends State<HomePage> {
                 ],
               ),
               drawer: const HomeDrawer(/*data: user*/),
-              bottomNavigationBar: BottomNavigationBar(
+              bottomNavigationBar: CurvedNavigationBar(
+                backgroundColor: Colors.transparent,
+                buttonBackgroundColor: Colors.pink,
+                color: Colors.pink,
+                animationDuration: const Duration(milliseconds: 300),
+                items: widgetItems,
+                onTap: (index) {
+                  var appBarTitle = appBarText[index];
+                  landingPageBloc.add(LandingPageTabChangeEvent(
+                      tabIndex: index, appBarName: appBarTitle));
+                },
+              )
+              /*BottomNavigationBar(
                 items: bottomNavItems,
                 currentIndex: state.tabIndex,
                 selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
@@ -89,7 +102,8 @@ class _LandingPageState extends State<HomePage> {
                   landingPageBloc.add(LandingPageTabChangeEvent(
                       tabIndex: index, appBarName: appBarTitle));
                 },
-              ),
+              )*/
+              ,
               body: pages[state.tabIndex]);
         });
   }
