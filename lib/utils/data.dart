@@ -63,3 +63,18 @@ List<Ingredient> moreIngredients = [
       image: 'assets/images/ic_millet.png',
       quantity: '50g'),
 ];
+
+List<ProductData> cartItems = [
+  ProductData(
+      name: "Spicy Spaghetti",
+      image: 'assets/images/ic_millet.png',
+      price: 30.00),
+  ProductData(
+      name: "Mix Fruit Plate",
+      image: 'assets/images/ic_millet.png',
+      price: 23.66),
+  ProductData(
+      name: "Chicken Chips",
+      image: 'assets/images/ic_millet.png',
+      price: 35.50),
+];
