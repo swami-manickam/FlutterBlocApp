@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_bloc_pattern/presentation/widgets/item_list.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({super.key});
@@ -90,7 +91,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
           ),
           InkWell(
               onTap: () {
-                Navigator.of(context).popAndPushNamed("support");
+                //Navigator.of(context).popAndPushNamed("support");
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => CartItemsList()));
               },
               child: const Padding(
                 padding: EdgeInsets.all(8),
