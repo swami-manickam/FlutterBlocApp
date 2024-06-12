@@ -39,17 +39,20 @@ class CartItemCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                item.name,
-                textScaleFactor: 1.4,
-                style: const TextStyle(fontWeight: FontWeight.w600),
-              ),
+              Text(item.name,
+                  /*   textScaleFactor: 1.4,*/
+                  style: const TextStyle(
+                    color: Colors.pink,
+                    fontSize: 18,
+                  )),
               const SizedBox(height: 5),
               Text(
                 "\$${item.price}",
-                textScaleFactor: 1.4,
+                /* textScaleFactor: 1.4,*/
                 style: const TextStyle(
-                    fontWeight: FontWeight.w600, color: Colors.pink),
+                  color: Colors.pink,
+                  fontSize: 14,
+                ),
               ),
               const SizedBox(height: 10),
             ],
