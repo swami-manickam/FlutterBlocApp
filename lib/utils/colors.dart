@@ -12,6 +12,9 @@ const whiteColor = Colors.white;
 const ratingBarColor = Color(0xFFF6FBFF);
 const ratingStarColor = Color(0xFFffcc00);
 const btnBbColor = Color(0xFFFF8C48);
+const redColor = Color(0xFFFF4665);
+const greyColor = Color.fromARGB(255, 119, 118, 118);
+static const Color darkBlueColor = Color(0xff06004F);
 
 // Food Category Gradients
 const italianGradient = LinearGradient(colors: [
